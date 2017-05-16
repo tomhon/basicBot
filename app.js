@@ -20,3 +20,9 @@ server.post('/api/messages', connector.listen());
 var bot = new builder.UniversalBot(connector, function (session) {
     session.send("You said: %s", session.message.text);
 });
+
+// web interface
+server.get('/', restify.serveStatic({
+ directory: __dirname,
+ default: '/index.html',
+}));
